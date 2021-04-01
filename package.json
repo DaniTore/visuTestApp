@@ -1,0 +1,15 @@
+{
+  "name": "visutest",
+  "version": "1.0.0",
+  "description": "App to study visu",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Daniel Tore",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1"
+  }
+}
