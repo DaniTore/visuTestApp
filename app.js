@@ -15,18 +15,13 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     let d = new Date;
     let fecha = d.getFullYear();
-    res.render('Home', {
+    res.render('home', {
         nombre: 'Danie Tore',
         fecha
     });
 });
 app.get('/generic', (req, res) => {
     res.render('generic');
-});
-
-
-app.get('*', (req, res) => {
-    res.status(404).sendFile(__dirname + '/public/404.html');
 });
 
 app.listen(port, () => {

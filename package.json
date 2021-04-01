@@ -2,7 +2,7 @@
     "name": "visutest",
     "version": "1.0.0",
     "description": "App to study visu",
-    "main": "index.js",
+    "main": "app.js",
     "scripts": {
         "test": "test",
         "start": "node app.js"
