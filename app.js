@@ -1,23 +1,30 @@
+require('dotenv').config();
 const express = require('express');
-const app = express();
-const port = 3000;
+var hbs = require('hbs');
 
-// Servir contenido estatico
+const app = express();
+const port = process.env.PORT;
 
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 
+// Servir contenido estatico
 app.use(express.static('public'));
 
 
-app.get('/galeria', (req, res) => {
-    res.send('Galeria de imagenes');
+app.get('/', (req, res) => {
+    let d = new Date;
+    let fecha = d.getFullYear();
+    res.render('Home', {
+        nombre: 'Danie Tore',
+        fecha
+    });
 });
 app.get('/generic', (req, res) => {
-    res.sendFile(__dirname + '/public/generic.html');
+    res.render('generic');
 });
-app.get('/elements', (req, res) => {
-    res.sendFile(__dirname + '/public/elements.html');
-});
+
+
 app.get('*', (req, res) => {
     res.status(404).sendFile(__dirname + '/public/404.html');
 });
