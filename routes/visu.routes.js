@@ -10,10 +10,7 @@ const router = Router();
 
 router.get('/', getAllVisu);
 //router.get('/?q=megustalamortadelaconnutella&t=lometesxel(.)', getFilterVisu);
-
 router.post('/visu', postVisu);
 router.put('/visu/:id', putVisu);
-
-
 
 module.exports = router;
