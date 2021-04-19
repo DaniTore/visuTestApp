@@ -1,6 +1,6 @@
-{
-    nombre: 'animal'
-}
+/* {
+    nombre, correo, password, rol
+} */
 
 const { Schema, model} = require('mongoose');
 
@@ -8,16 +8,15 @@ const UsuarioShema = Schema({
     nombre: {
         type: String,
         require: [true, 'El nombre es obligatorio'],
-        unique: true
     },
     correo: {
         type: String,
-        require: [true, 'El nombre es obligatorio'],
+        require: [true, 'El correo es obligatorio'],
         unique: true
     },
     password: {
         type: String,
-        require: [true, 'El nombre es obligatorio']
+        require: [true, 'El password es obligatorio']
     },
     rol: {
         type: String,

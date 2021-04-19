@@ -3,21 +3,32 @@ const { requqest, response } = require('express');
 const Usuario = require('../models/usuario')
 
 const postUser = async(req, res = response) => {
-
-    let printRequest = request => {
-        console.log(`> ${request.method} - ${request.headers.host}${request.url}`);
+    try {
+        console.log("Entra en postUser");
+        const { nombre, correo, password, rol } = req.body;
+        const usuario = new Usuario( {nombre, correo, password, rol} );
+        console.log("usuario",);
+        await usuario.save().then(savedDoc => {
+            console.log(savedDoc)
+            res.json({
+                msg: 'post API - usuario POST ',
+                usuario: savedDoc
+            }); // true
+          }).catch( error => {
+              res.json({
+                  ok: false,
+                  error
+              })
+          }
+    
+          )
+    } catch (error) {
+        res.json({
+            ok:false,
+            error
+        })
     }
-    printRequest(req)
-    const body = req.body;
-    const usuario = new Usuario( body );
-
-    //await usuario.save();
-
-    console.log("Pasa por aqui");
-    res.json({
-        msg: 'post API - usuario POST ',
-        usuario
-    });
+    
 };
 /* 
 const getAllVisu = (req, res = response) => {
@@ -45,3 +56,9 @@ const putVisu = (req, res = response) => {
 module.exports = {
     postUser
 };
+
+function printRequest() {
+    return request => {
+        console.log(`> ${request.method} - ${request.headers.host}${request.url}`);
+    };
+}
