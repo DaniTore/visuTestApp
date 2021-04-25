@@ -4,23 +4,21 @@ const Usuario = require('../models/usuario')
 
 const postUser = async(req, res = response) => {
     try {
-        console.log("Entra en postUser");
         const { nombre, correo, password, rol } = req.body;
         const usuario = new Usuario( {nombre, correo, password, rol} );
-        console.log("usuario",);
-        await usuario.save().then(savedDoc => {
-            console.log(savedDoc)
-            res.json({
-                msg: 'post API - usuario POST ',
-                usuario: savedDoc
-            }); // true
-          }).catch( error => {
+        await usuario.save()
+            .then(savedDoc => {
+                res.json({
+                    msg: 'post API - usuario POST ',
+                    usuario: savedDoc
+                }); // true
+            })
+            .catch( error => {
               res.json({
                   ok: false,
                   error
               })
-          }
-    
+            }
           )
     } catch (error) {
         res.json({

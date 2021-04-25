@@ -3,6 +3,6 @@ const { postUser } = require('../controllers/userCrud.controller');
 
 const router = Router();
 
-router.post('/api/usuario', postUser );
+router.post('/', postUser );
 
 module.exports = router;

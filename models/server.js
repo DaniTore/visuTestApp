@@ -33,8 +33,10 @@ class Server {
     }
 
     routes() {
-        this.app.use('/', require('../routes/visu.routes'));
-        this.app.use('/', require('../routes/user.routes'));
+        this.app.use('/api/visu', require('../routes/visu.routes'));
+        this.app.use('/api/usuario', require('../routes/user.routes'));
+        this.app.use('/api/reino', require('../routes/reino.routes'));
+        this.app.use('/api/filo', require('../routes/filo.routes'));
     }
 
     listen() {

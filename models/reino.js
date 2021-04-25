@@ -13,6 +13,7 @@ const ReinoShema = Schema({
     estado: {
         type: Boolean,
         default: true,
+        require: true
     }
 });
 
